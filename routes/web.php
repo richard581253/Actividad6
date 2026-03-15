@@ -1,13 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Universe;
+use App\Http\Controllers\UniverseController;
+use App\Models\Superheroe;
 
 Route::get('/', function () {
-    
-    return response()->json([
-        'status'=> true,
-        'universes' => Universe::all()
 
+    $superheroe = Superheroe::where('gender', 'male')->get();
+
+    return response()->json([
+        'superheroe' => $superheroe
     ]);
+
 });
+
+
+
+//Route::get('/universes', [UniverseController::class, 'index']);
+
+Route::resource('/universes', UniverseController::class);

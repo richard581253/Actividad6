@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HAsFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Universe extends Model
-{   
+{
     use HasFactory;
 
     protected $fillable = [
-        'universe' ,
-        'company' ,
-        'age'
-    ];
+        'universe',
+        'company',
+        'age',
+    ]; 
 
-}   
+    public function superheroes()
+{
+    return $this->hasMany(Superheroe::class,'Universe_id');
+}
+    }
